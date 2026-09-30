@@ -1,0 +1,6 @@
+{
+  "name": "AutoTube Studio - YouTube AI Content & Auto-Poster",
+  "description": "Connect your YouTube channel, generate viral scripts, titles, descriptions, and thumbnails with Gemini AI, and schedule automated consistent posting with admin controls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
