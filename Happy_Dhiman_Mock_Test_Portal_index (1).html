@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Dhiman – Mock Test Portal</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--tx:#1b1f2a;--mut:#667085;--pri:#0f766e;--ok:#15803d;--bad:#b91c1c;--bd:#e1e5ee;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1514;--card:#16201f;--tx:#e8f0ef;--mut:#93a6a3;--pri:#2dd4bf;--ok:#4ade80;--bad:#f87171;--bd:#26413d;--on:#06201c}}
+:root[data-theme="dark"]{--bg:#0e1514;--card:#16201f;--tx:#e8f0ef;--mut:#93a6a3;--pri:#2dd4bf;--ok:#4ade80;--bad:#f87171;--bd:#26413d;--on:#06201c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:820px;margin:0 auto;padding:16px}.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:12px 0}
+h1{font-size:1.35rem;margin:0 0 4px}h2{font-size:1.05rem;margin:0 0 8px}.mut{color:var(--mut);font-size:.9rem}
+button,input{font:inherit}input{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx)}
+button{background:var(--pri);color:var(--on);border:0;border-radius:10px;padding:10px 14px;cursor:pointer;margin:4px 4px 4px 0}
+button.opt{display:block;width:100%;text-align:left;margin:6px 0;background:var(--bg);color:var(--tx);border:1px solid var(--bd)}
+button.opt.ok{background:var(--bg);color:var(--ok)}button.opt.bad{background:var(--bg);color:var(--bad)}
+button.opt.ok{border-color:var(--ok);color:var(--ok)}button.opt.bad{border-color:var(--bad);color:var(--bad)}
+button.sm{padding:6px 11px;font-size:.85rem}
+textarea{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit;margin:8px 0}
+.brand{display:flex;align-items:center;gap:12px}.lg{width:52px;height:52px;flex:none}.brand>div{flex:1}
+#splash{position:fixed;inset:0;z-index:99;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;animation:sp .5s ease 2.2s forwards}
+#splash .big{width:120px;height:120px;animation:pop .8s ease both}#splash .nm{font-size:1.9rem;font-weight:700;animation:pop .8s ease .25s both}#splash .mut{animation:pop .8s ease .45s both}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}@keyframes sp{to{opacity:0;visibility:hidden}}
+.sol{margin-top:8px;padding:10px;border-left:3px solid var(--pri);background:var(--bg);border-radius:6px;font-size:.92rem}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:8px 12px;margin:8px 0;display:flex;justify-content:space-between;z-index:2}
+#gate{max-width:380px;margin:12vh auto}.err{color:var(--bad);min-height:1.2em;font-size:.9rem}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="lgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f766e"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><symbol id="logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="url(#lgG)"/><circle cx="50" cy="50" r="41" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2"/><text x="50" y="63" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="38" fill="#fff">HD</text></symbol></svg>
+<div id="splash"><svg class="big"><use href="#logo"/></svg><div class="nm">Happy Dhiman</div><div class="mut">Mock Test Portal</div></div>
+<script id="cd" type="application/json">[]</script>
+<script id="tpl" type="text/plain"><!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Dhiman – Mock Test Portal</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--tx:#1b1f2a;--mut:#667085;--pri:#0f766e;--ok:#15803d;--bad:#b91c1c;--bd:#e1e5ee;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1514;--card:#16201f;--tx:#e8f0ef;--mut:#93a6a3;--pri:#2dd4bf;--ok:#4ade80;--bad:#f87171;--bd:#26413d;--on:#06201c}}
+:root[data-theme="dark"]{--bg:#0e1514;--card:#16201f;--tx:#e8f0ef;--mut:#93a6a3;--pri:#2dd4bf;--ok:#4ade80;--bad:#f87171;--bd:#26413d;--on:#06201c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:820px;margin:0 auto;padding:16px}.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:12px 0}
+h1{font-size:1.35rem;margin:0 0 4px}h2{font-size:1.05rem;margin:0 0 8px}.mut{color:var(--mut);font-size:.9rem}
+button,input{font:inherit}input{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx)}
+button{background:var(--pri);color:var(--on);border:0;border-radius:10px;padding:10px 14px;cursor:pointer;margin:4px 4px 4px 0}
+button.opt{display:block;width:100%;text-align:left;margin:6px 0;background:var(--bg);color:var(--tx);border:1px solid var(--bd)}
+button.opt.ok{background:var(--bg);color:var(--ok)}button.opt.bad{background:var(--bg);color:var(--bad)}
+button.opt.ok{border-color:var(--ok);color:var(--ok)}button.opt.bad{border-color:var(--bad);color:var(--bad)}
+button.sm{padding:6px 11px;font-size:.85rem}
+textarea{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit;margin:8px 0}
+.brand{display:flex;align-items:center;gap:12px}.lg{width:52px;height:52px;flex:none}.brand>div{flex:1}
+#splash{position:fixed;inset:0;z-index:99;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;animation:sp .5s ease 2.2s forwards}
+#splash .big{width:120px;height:120px;animation:pop .8s ease both}#splash .nm{font-size:1.9rem;font-weight:700;animation:pop .8s ease .25s both}#splash .mut{animation:pop .8s ease .45s both}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}@keyframes sp{to{opacity:0;visibility:hidden}}
+.sol{margin-top:8px;padding:10px;border-left:3px solid var(--pri);background:var(--bg);border-radius:6px;font-size:.92rem}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:8px 12px;margin:8px 0;display:flex;justify-content:space-between;z-index:2}
+#gate{max-width:380px;margin:12vh auto}.err{color:var(--bad);min-height:1.2em;font-size:.9rem}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="lgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f766e"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs><symbol id="logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="url(#lgG)"/><circle cx="50" cy="50" r="41" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2"/><text x="50" y="63" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="38" fill="#fff">HD</text></symbol></svg>
+<div id="splash"><svg class="big"><use href="#logo"/></svg><div class="nm">Happy Dhiman</div><div class="mut">Mock Test Portal</div></div>
+<script id="cd" type="application/json">@@CD@@<\/script>
+<script id="tpl" type="text/plain">@@TPL@@<\/script>
+<div class="wrap" id="gate"><div class="card">
+<svg class="lg"><use href="#logo"/></svg>
+<h1>Happy Dhiman – Mock Test Portal</h1>
+<p class="mut">SSC CGL • Delhi Police • Haryana Police. Password daalein.</p>
+<input id="pw" type="password" placeholder="Password" autocomplete="off"><p class="err" id="err"></p><button id="go">Enter</button>
+</div></div>
+
+<div class="wrap" id="app" hidden>
+<div class="card brand"><svg class="lg"><use href="#logo"/></svg><div><h1>Happy Dhiman</h1><div class="mut">Mock Test Portal • SSC CGL • Delhi Police • Haryana Police</div></div><button id="adm" class="sm" hidden>⚙ Admin</button></div>
+<div id="view"></div>
+</div>
+
+<script>
+const HASH="f96881beb3ca7ef4c1df213c455bfba23927f60ddb94cc171f948afc719f96ed";
+async function sha(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+async function unlock(){try{if(await sha(document.getElementById("pw").value)===HASH){show()}else document.getElementById("err").textContent="Galat password."}catch(e){document.getElementById("err").textContent="Is browser mein password check nahi ho pa raha. Chrome mein kholein."}}
+function show(){document.getElementById("gate").hidden=true;document.getElementById("app").hidden=false;home()}
+document.getElementById("go").onclick=unlock;document.getElementById("pw").onkeydown=e=>{if(e.key==="Enter")unlock()};
+
+// Format: [sawal, [options], sahi_option_index(0-3), solution]
+const Q={
+"Maths":[
+["480 ka 25% kitna hai?",["100","120","140","160"],1,"480 × 25/100 = 120."],
+["CP ₹500, SP ₹600 – profit % kitna?",["10%","15%","20%","25%"],2,"Profit 100; 100/500 × 100 = 20%."],
+["12 mazdoor ek kaam 10 din mein karte hain. 20 mazdoor kitne din lenge?",["4","5","6","8"],2,"12×10 = 120 man-days; 120/20 = 6 din."],
+["5 sankhyaon ka average 20 hai. Unka yog?",["25","80","100","120"],2,"Yog = average × count = 20×5 = 100."],
+["₹2000 par 5% saal dar se 3 saal ka SI?",["₹200","₹300","₹400","₹500"],1,"SI = 2000×5×3/100 = ₹300."],
+["72 km/h ko m/s mein badlo.",["10","15","20","25"],2,"72 × 5/18 = 20 m/s."],
+["12 aur 18 ka LCM?",["24","36","54","72"],1,"12=2²×3, 18=2×3²; LCM = 2²×3² = 36."],
+["36 aur 48 ka HCF?",["6","8","12","24"],2,"36=2²×3², 48=2⁴×3; HCF = 2²×3 = 12."],
+["√1521 = ?",["37","38","39","41"],2,"39 × 39 = 1521."],
+["A:B = 2:3 aur A+B = 50. A = ?",["15","20","25","30"],1,"A = 50 × 2/5 = 20."],
+["150 m lambi train 54 km/h se khambe ko kitne second mein paar karegi?",["8","10","12","15"],1,"54 km/h = 15 m/s; 150/15 = 10 s."],
+["Marked price ₹800 par 25% chhoot. Selling price?",["₹550","₹600","₹650","₹700"],1,"Chhoot = 200; SP = 600."],
+["a+b = 10, ab = 21 ho to a²+b² = ?",["52","58","62","79"],1,"a²+b² = (a+b)² − 2ab = 100 − 42 = 58."],
+["7 cm radius ke vritt ka kshetrafal? (π = 22/7)",["44","144","154","164"],2,"πr² = 22/7 × 49 = 154 cm²."],
+["Samaan shatbhuj (hexagon) ka ek antah kon?",["108°","120°","135°","150°"],1,"(n−2)×180/n = 4×180/6 = 120°."]],
+"Reasoning":[
+["3, 6, 11, 18, 27, ?",["36","38","40","42"],1,"Antar 3,5,7,9,11 → 27+11 = 38."],
+["Agar CAT = DBU, to DOG = ?",["EPH","EOH","FPH","EPG"],0,"Har akshar +1: D→E, O→P, G→H."],
+["Alag chuniye:",["Seb","Aam","Aloo","Kela"],2,"Aloo sabzi hai, baaki phal."],
+["A ki maa ka iklauta bhai A ka kaun hai?",["Pita","Chacha","Mama","Dada"],2,"Maa ka bhai = mama."],
+["Ek aadmi 5 km Uttar, phir 5 km Purv, phir 5 km Dakshin gaya. Shuruaat se doori?",["0","5 km","10 km","15 km"],1,"Uttar–Dakshin cancel; sirf 5 km Purv bacha."],
+["A, C, F, J, O, ?",["T","U","V","W"],1,"Antar 2,3,4,5,6; O(15)+6 = 21 = U."],
+["3:00 baje ghadi ke kaanton ke beech kon?",["60°","90°","120°","180°"],1,"3 ghante = 3×30° = 90°."],
+["A=1, B=2 … to CAB ka yog?",["5","6","7","8"],1,"3+1+2 = 6."],
+["8 : 64 :: 5 : ?",["10","25","40","125"],1,"8² = 64, isliye 5² = 25."],
+["Aaj Somvaar hai. 10 din baad kaun sa din?",["Buddhvaar","Guruvaar","Shukravaar","Shanivaar"],1,"10 mod 7 = 3; Somvaar+3 = Guruvaar."]],
+"English":[
+["Synonym of 'Abundant':",["Scarce","Plentiful","Rare","Tiny"],1,"Abundant = Plentiful (bahut)."],
+["Antonym of 'Ancient':",["Old","Modern","Past","Historic"],1,"Ancient (puraana) ka ulta Modern."],
+["One word: 'Kitabon se prem karne wala'",["Bibliophile","Philanthropist","Misogynist","Optimist"],0,"Bibliophile = book lover."],
+["Idiom 'A piece of cake' ka matlab?",["Mithai","Bahut aasaan","Mehnga","Mushkil"],1,"Very easy task."],
+["He ___ to school every day.",["go","goes","going","gone"],1,"Third person singular + present: goes."],
+["Passive: 'She writes a letter.'",["A letter is written by her","A letter was written by her","A letter writes her","A letter is wrote by her"],0,"Simple present passive: is + V3."],
+["Sahi spelling chuniye:",["Neccessary","Necessary","Necesary","Neccesary"],1,"Necessary (1 c, 2 s)."],
+["Antonym of 'Generous':",["Kind","Stingy","Rich","Brave"],1,"Generous ka ulta Stingy (kanjoos)."],
+["Idiom 'Once in a blue moon':",["Bahut kabhi-kabhi","Roz","Raat ko","Jaldi"],0,"Very rarely."],
+["___ hour has passed.",["A","An","The an","No article"],1,"'hour' ki dhwani vowel se shuru, isliye An."],
+["Synonym of 'Brave':",["Timid","Courageous","Lazy","Weak"],1,"Brave = Courageous."],
+["Antonym of 'Victory':",["Win","Defeat","Success","Triumph"],1,"Victory ka ulta Defeat."],
+["'Ephemeral' ka matlab?",["Short-lived","Eternal","Huge","Silent"],0,"Thode samay ka."],
+["Plural of 'child':",["Childs","Children","Childes","Childrens"],1,"Children."],
+["I ___ him yesterday.",["see","saw","seen","seeing"],1,"Past tense: saw."],
+["Idiom 'Break the ice':",["Barf todna","Baatcheet shuru karna","Ladai","Chup rehna"],1,"Anjaan logon mein baat shuru karna."],
+["Study of birds:",["Ornithology","Zoology","Ecology","Biology"],0,"Ornithology."],
+["Synonym of 'Huge':",["Tiny","Enormous","Narrow","Soft"],1,"Huge = Enormous."],
+["Synonym of 'Rapid':",["Slow", "Swift", "Late", "Weak"],1,"Rapid = Swift (tez)."],
+["Antonym of 'Expand':",["Grow", "Contract", "Spread", "Extend"],1,"Expand (failana) ka ulta Contract (sikodna)."],
+["One word: 'Bahut si bhashayein bolne wala'",["Polyglot", "Pedestrian", "Novice", "Orator"],0,"Polyglot = many languages speaker."],
+["Idiom 'Cry over spilt milk' ka matlab?",["Doodh girana", "Beete nuksaan par pachhtana", "Bahut rona", "Jaldi karna"],1,"Past loss par afsos karna bekaar hai."],
+["She is good ___ Maths.",["in", "on", "at", "of"],2,"'Good at' sahi preposition hai."],
+["Plural of 'Mouse':",["Mouses", "Mice", "Mices", "Mouse"],1,"Mouse → Mice (irregular)."],
+["Sahi spelling chuniye:",["Accommodation", "Acommodation", "Accomodation", "Acomodation"],0,"Accommodation – double c, double m."],
+["Synonym of 'Candid':",["Secretive", "Frank", "Rude", "Shy"],1,"Candid = Frank (saaf-saaf bolne wala)."],
+["Antonym of 'Transparent':",["Clear", "Opaque", "Thin", "Bright"],1,"Transparent ka ulta Opaque."],
+["Idiom 'Hit the nail on the head':",["Keel thokna", "Bilkul sahi baat kehna", "Gussa karna", "Chot lagna"],1,"Exactly right baat kehna."],
+["Passive: 'They are playing cricket.'",["Cricket is played by them.", "Cricket is being played by them.", "Cricket was being played by them.", "Cricket has been played by them."],1,"Present continuous passive: is/are + being + V3."],
+["Neither of the boys ___ present.",["were", "was", "are", "have been"],1,"'Neither of' ke saath singular verb: was."],
+["Study of insects:",["Etymology", "Entomology", "Ornithology", "Ecology"],1,"Entomology = insects ka adhyayan."],
+["Synonym of 'Diligent':",["Lazy", "Hardworking", "Careless", "Weak"],1,"Diligent = Hardworking."]],
+"GK":[
+["Bharat ke pehle pradhanmantri?",["Sardar Patel","J. L. Nehru","Gandhi","Rajendra Prasad"],1,"Jawaharlal Nehru (1947)."],
+["Australia ki rajdhani?",["Sydney","Melbourne","Canberra","Perth"],2,"Canberra."],
+["Anuchhed 21 kis se juda hai?",["Samanta","Jeevan aur vyaktigat swatantrata","Shiksha","Dharm"],1,"Right to life and personal liberty."],
+["'Discovery of India' kisne likhi?",["Gandhi","Nehru","Tagore","Ambedkar"],1,"J. L. Nehru ne."],
+["Sabse bada grah?",["Shani","Jupiter","Prithvi","Mangal"],1,"Jupiter (Brihaspati)."],
+["Vitamin C ki kami se kaun sa rog?",["Rickets","Scurvy","Night blindness","Beriberi"],1,"Scurvy."],
+["RBI ka mukhyalaya?",["Delhi","Mumbai","Kolkata","Chennai"],1,"Mumbai."],
+["Quit India Movement kab shuru hua?",["1930","1940","1942","1945"],2,"August 1942."],
+["Fire extinguisher mein kaun si gas?",["O₂","CO₂","N₂","H₂"],1,"Carbon dioxide."],
+["Sone ka rasayanik sanket?",["Ag","Au","Fe","Gd"],1,"Au (Aurum)."],
+["Plassey ka yuddh kab hua?",["1757","1764","1857","1526"],0,"1757."],
+["Mool kartavya kis sanshodhan se joode?",["42wan","44wan","73wan","86wan"],0,"42va sanshodhan (1976)."],
+["Lok Sabha chunav ladne ki nyunatam aayu?",["21","25","30","35"],1,"25 varsh."],
+["Rashtrapati ka karyakal?",["4 varsh","5 varsh","6 varsh","7 varsh"],1,"5 varsh."],
+["Delhi Police ka mukhyalaya kahan hai?",["ITO","Karol Bagh","Dwarka","Rohini"],0,"ITO ke paas (Jai Singh Marg)."],
+["Taj Mahal kis nadi ke kinare hai?",["Ganga","Yamuna","Gomti","Chambal"],1,"Agra mein Yamuna ke kinare."],
+["Sound (dhwani) ki taivrata ki ikai?",["Hertz","Decibel","Watt","Newton"],1,"Decibel (dB)."],
+["Samvidhan sabha ke adhyaksh?",["Ambedkar","Rajendra Prasad","Nehru","Patel"],1,"Dr. Rajendra Prasad."],
+["Prarup (Drafting) Samiti ke adhyaksh?",["Ambedkar","Nehru","Patel","Azad"],0,"Dr. B. R. Ambedkar."],
+["Universal donor blood group?",["A+","AB+","O negative","B+"],2,"O negative."],
+["Haemoglobin mein kaun sa tatva hota hai?",["Calcium","Loha (Iron)","Sodium","Zinc"],1,"Iron (Fe)."],
+["Dhoop se kaun sa vitamin milta hai?",["A","B","C","D"],3,"Vitamin D."],
+["Jallianwala Bagh kaand kab hua?",["1905","1919","1930","1942"],1,"13 April 1919, Amritsar."],
+["GST kab lagu hua?",["1 Apr 2016","1 Jul 2017","1 Jan 2018","15 Aug 2017"],1,"1 July 2017."],
+["Haldighati ka yuddh kab hua?",["1526","1556","1576","1605"],2,"1576: Akbar vs Maharana Pratap."],
+["Rajya Sabha ke sabhapati kaun hote hain?",["Pradhanmantri","Uprashtrapati","Speaker","Rashtrapati"],1,"Bharat ke Uprashtrapati."],
+["Sabse adhik aabadi wala rajya?",["Bihar","Maharashtra","Uttar Pradesh","MP"],2,"Uttar Pradesh."],
+["Kshetrafal mein sabse bada rajya?",["Rajasthan","MP","Maharashtra","UP"],0,"Rajasthan."],
+["Ozone parat kisse bachati hai?",["Infrared","Paraybaingani (UV) kiran","Radio tarang","Sound"],1,"Sooraj ki UV kirnon se."],
+["Bharat mein bahne wali sabse lambi nadi?",["Yamuna", "Ganga", "Godavari", "Narmada"],1,"Ganga (~2525 km)."],
+["Bharat ka Samvidhan kab lagu hua?",["15 Aug 1947", "26 Nov 1949", "26 Jan 1950", "2 Oct 1950"],2,"26 January 1950."],
+["Rajya Sabha ke padasin (Chairman) kaun hote hain?",["Pradhanmantri", "Upraashtrapati", "Rashtrapati", "Lok Sabha adhyaksh"],1,"Upraashtrapati."],
+["Kshetrafal mein Bharat ka sabse bada rajya?",["Madhya Pradesh", "Rajasthan", "Maharashtra", "UP"],1,"Rajasthan."],
+["Kshetrafal mein Bharat ka sabse chhota rajya?",["Sikkim", "Goa", "Tripura", "Haryana"],1,"Goa."],
+["Jallianwala Bagh narsanhar kab hua?",["1905", "1919", "1922", "1930"],1,"13 April 1919, Amritsar."],
+["Ashoka ke adhiktar abhilekh kis lipi mein hain?",["Devanagari", "Brahmi", "Kharoshthi", "Tamil"],1,"Adhiktar Brahmi lipi mein."],
+["Chauri Chaura kand kab hua?",["1919", "1920", "1922", "1930"],2,"1922; Asahyog Andolan waapas liya gaya."],
+["Prakash sanshleshan mein kaun si gas nikalti hai?",["CO2", "Oxygen", "Nitrogen", "Hydrogen"],1,"Oxygen (O2)."],
+["Manav sharir ki sabse badi granthi?",["Agnashay", "Yakrit (Liver)", "Thyroid", "Pituitary"],1,"Liver sabse badi granthi hai."],
+["Vitamin K kis kaam ke liye zaroori hai?",["Haddi", "Khoon ka jamna", "Aankh", "Tvacha"],1,"Blood clotting."],
+["Bharat ka pehla upgrah?",["Bhaskara", "Aryabhata", "INSAT-1A", "Rohini"],1,"Aryabhata (1975)."],
+["ISRO ka mukhyalaya kahan hai?",["Mumbai", "Bengaluru", "Hyderabad", "Sriharikota"],1,"Bengaluru."],
+["Chandrayaan-3 ki soft landing kab hui?",["14 Jul 2023", "23 Aug 2023", "2 Sep 2023", "15 Aug 2023"],1,"23 August 2023."],
+["GST Bharat mein kab lagu hua?",["1 Apr 2016", "1 Jul 2017", "1 Jan 2018", "1 Apr 2017"],1,"1 July 2017."],
+["Bharat ka rashtriya pakshi?",["Kabutar", "Mor", "Tota", "Koyal"],1,"Mor (Peacock)."],
+["Bharat ka rashtriya pashu?",["Sher", "Hathi", "Bagh (Tiger)", "Tendua"],2,"Bagh (Tiger)."],
+["'Vande Mataram' ke rachayita?",["Tagore", "Bankim Chandra Chatterjee", "Iqbal", "Sarojini Naidu"],1,"Bankim Chandra Chatterjee."],
+["Buland Darwaza kahan hai?",["Agra Fort", "Fatehpur Sikri", "Delhi", "Lucknow"],1,"Fatehpur Sikri."],
+["73va sanshodhan kis se juda hai?",["Nagar Palika", "Panchayati Raj", "Mool Adhikar", "Rajya Sabha"],1,"Panchayati Raj."],
+["Sabse bada mahasagar?",["Atlantic", "Pacific", "Indian", "Arctic"],1,"Pacific."]],
+"Haryana GK":[
+["Haryana kab bana?",["1 Nov 1956","1 Nov 1966","26 Jan 1950","15 Aug 1966"],1,"1 November 1966 (Punjab se alag)."],
+["Haryana ke pehle mukhyamantri?",["Bansi Lal","Bhagwat Dayal Sharma","Devi Lal","Bhajan Lal"],1,"Pt. Bhagwat Dayal Sharma."],
+["Haryana ka rajya pakshi?",["Mor","Kala Titar","Kabutar","Tota"],1,"Black Francolin (Kala Titar)."],
+["Haryana ka rajya pashu?",["Blackbuck (Krishna mrig)","Sher","Hathi","Neelgai"],0,"Blackbuck."],
+["Surajkund Mela kahan lagta hai?",["Rohtak","Faridabad","Hisar","Karnal"],1,"Faridabad."],
+["Pinjore Garden kis zile mein hai?",["Ambala","Panchkula","Sonipat","Rewari"],1,"Panchkula (Mughal-style garden)."],
+["Panipat ka pehla yuddh kab hua?",["1526","1556","1761","1192"],0,"1526: Babur vs Ibrahim Lodi."],
+["Tilyar Lake kahan hai?",["Rohtak","Jind","Bhiwani","Sirsa"],0,"Rohtak."],
+["Haryana ka rajya vriksh?",["Neem","Peepal","Bargad","Aam"],1,"Peepal."],
+["Haryana High Court kahan hai?",["Delhi","Chandigarh","Gurugram","Ambala"],1,"Chandigarh (Punjab & Haryana HC)."],
+["Brahma Sarovar kahan hai?",["Kurukshetra","Panipat","Karnal","Jind"],0,"Kurukshetra."],
+["Haryana ka rajya phool?",["Gulab","Kamal (Lotus)","Genda","Chameli"],1,"Lotus."],
+["Haryana Vidhan Sabha mein kitni seats hain?",["70","80","90","100"],2,"90 seats."],
+["Haryana se Lok Sabha ki kitni seats hain?",["8","10","12","13"],1,"10 seats."],
+["Rakhigarhi (Harappan sthal) kis zile mein hai?",["Hisar","Rohtak","Sirsa","Palwal"],0,"Hisar."],
+["Haryana ka prasiddh lok natya?",["Saang","Yakshagana","Nautanki UP","Bhavai"],0,"Saang."],
+["Haryana ka sabse zyada aabadi wala shahar?",["Gurugram","Faridabad","Panipat","Ambala"],1,"Faridabad."],
+["Haryana ki purvi seema par kaun si nadi hai?",["Yamuna","Sutlej","Narmada","Chambal"],0,"Yamuna (UP ke saath seema)."],
+["Haryana ki rajdhani?",["Ambala", "Chandigarh", "Gurugram", "Rohtak"],1,"Chandigarh (Punjab ke saath saajhi)."],
+["Gita Upadesh sthal 'Jyotisar' kis zile mein hai?",["Karnal", "Kurukshetra", "Panipat", "Jind"],1,"Kurukshetra."],
+["Kshetrafal mein Haryana ka sabse bada zila?",["Hisar", "Sirsa", "Bhiwani", "Fatehabad"],1,"Sirsa."],
+["Morni Hills kis zile mein hain?",["Ambala", "Panchkula", "Yamunanagar", "Sonipat"],1,"Panchkula."],
+["Sultanpur Bird Sanctuary kis zile mein hai?",["Faridabad", "Gurugram", "Jhajjar", "Rewari"],1,"Gurugram."],
+["Kalesar National Park kis zile mein hai?",["Panchkula", "Yamunanagar", "Karnal", "Ambala"],1,"Yamunanagar."],
+["Panipat ko kis naam se jana jata hai?",["City of Weavers", "Steel City", "Mini Cuba", "Oil City"],0,"Handloom ke liye 'City of Weavers'."],
+["Panipat ka teesra yuddh kab hua?",["1526", "1556", "1761", "1857"],2,"1761, Marathe vs Ahmad Shah Abdali."],
+["Panipat ka doosra yuddh kab hua?",["1526", "1556", "1576", "1761"],1,"1556, Akbar (Bairam Khan) vs Hemu."],
+["Sheikh Chilli ka maqbara kahan hai?",["Thanesar", "Rohtak", "Hisar", "Narnaul"],0,"Thanesar (Kurukshetra)."],
+["Haryana ki rajkiya bhasha?",["Punjabi", "Hindi", "Haryanvi", "Urdu"],1,"Hindi (Punjabi doosri bhasha)."],
+["Hisar shahar ki sthapana kisne ki?",["Akbar", "Firoz Shah Tughlaq", "Babar", "Shahjahan"],1,"Firoz Shah Tughlaq (1354)."],
+["Bhiwani ko kis naam se jana jata hai?",["Mini Cuba", "Steel City", "Rice Bowl", "City of Weavers"],0,"Boxing ke liye 'Mini Cuba'."],
+["Haryana ki sabse oonchi chotti?",["Karoh Peak", "Dhosi", "Tosham", "Bir"],0,"Karoh Peak (Morni Hills)."]]
+};
+
+const view=document.getElementById("view");
+function rng(seed){let a=seed>>>0;return function(){a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const ri=(r,a,b)=>a+Math.floor(r()*(b-a+1)),pick=(r,a)=>a[Math.floor(r()*a.length)];
+function shuf(r,a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function mcq(r,q,ans,sol,fmt,cands){
+  fmt=fmt||(x=>String(x));const set=[];
+  (cands||[]).forEach(c=>{if(c!==ans&&c>0&&!set.includes(c))set.push(c)});
+  const st=Math.max(1,Math.round(ans/10));
+  for(let n=1;set.length<3;n++){[ans+n*st,ans-n*st].forEach(c=>{if(set.length<3&&c>0&&c!==ans&&!set.includes(c))set.push(c)})}
+  const o=shuf(r,[ans].concat(set.slice(0,3)));return [q,o.map(fmt),o.indexOf(ans),sol];
+}
+const Rs=x=>"₹"+x,Pc=x=>x+"%";
+const MG=[
+r=>{const p=pick(r,[10,15,20,25,30,40,45,60]),n=ri(r,5,40)*20,a=n*p/100;return mcq(r,`${n} ka ${p}% kitna hai?`,a,`${n} × ${p}/100 = ${a}.`)},
+r=>{const p=pick(r,[10,20,25,30,40,50]),cp=ri(r,5,30)*20,sp=cp+cp*p/100;return mcq(r,`CP ₹${cp}, SP ₹${sp}. Profit % kitna?`,p,`Profit ${sp-cp}; ${sp-cp}/${cp}×100 = ${p}%.`,Pc,[p+5,p+10,p-5])},
+r=>{const P=ri(r,2,10)*500,R=pick(r,[4,5,6,8,10]),t=pick(r,[2,3,4,5]),a=P*R*t/100;return mcq(r,`₹${P} par ${R}% saalana dar se ${t} saal ka SI?`,a,`SI = ${P}×${R}×${t}/100 = ₹${a}.`,Rs)},
+r=>{const sp=ri(r,8,18)*5,t=ri(r,2,6),a=sp*t;return mcq(r,`Gaadi ${sp} km/h se ${t} ghante chalti hai. Doori?`,a,`Doori = ${sp}×${t} = ${a} km.`,x=>x+" km")},
+r=>{const av=ri(r,10,60),n=ri(r,4,9),a=av*n;return mcq(r,`${n} sankhyaon ka average ${av} hai. Unka yog?`,a,`Yog = ${av}×${n} = ${a}.`)},
+r=>{const x=ri(r,1,5),y=x+ri(r,1,4),k=ri(r,2,12),a=k*x;return mcq(r,`A:B = ${x}:${y} aur A+B = ${k*(x+y)}. A = ?`,a,`A = ${k*(x+y)}×${x}/${x+y} = ${a}.`)},
+r=>{const [x,y]=pick(r,[[2,3],[3,4],[2,5],[3,5],[4,5],[3,7]]),m=ri(r,2,6),A=x*m,B=y*m;return r()<.5?mcq(r,`${A} aur ${B} ka LCM?`,x*y*m,`HCF = ${m}; LCM = ${A}×${B}/${m} = ${x*y*m}.`):mcq(r,`${A} aur ${B} ka HCF?`,m,`Common factor ${m}; HCF = ${m}.`)},
+r=>{const n=ri(r,12,35);return mcq(r,`√${n*n} = ?`,n,`${n} × ${n} = ${n*n}.`)},
+r=>{const m1=pick(r,[12,15,20,24,30]),d1=pick(r,[10,12,15,20]),T=m1*d1,ds=[];for(let m=5;m<=60;m++)if(T%m===0&&m!==m1)ds.push(m);const m2=pick(r,ds),a=T/m2;return mcq(r,`${m1} mazdoor ek kaam ${d1} din mein karte hain. ${m2} mazdoor kitne din lenge?`,a,`Kaam = ${m1}×${d1} = ${T}; ${T}/${m2} = ${a} din.`)},
+r=>{const mp=ri(r,4,20)*100,d=pick(r,[10,20,25,30]),a=mp*(100-d)/100;return mcq(r,`Marked price ₹${mp} par ${d}% chhoot. Selling price?`,a,`SP = ${mp}×${100-d}/100 = ₹${a}.`,Rs)},
+r=>{const R=pick(r,[7,14,21]),a=22*R*R/7;return mcq(r,`${R} cm radius ke vritt ka kshetrafal? (π = 22/7)`,a,`πr² = 22/7×${R}×${R} = ${a} cm².`)},
+r=>{const k=pick(r,[18,36,54,72,90,108,126,144,162,180]),a=k*5/18;return mcq(r,`${k} km/h ko m/s mein badlo.`,a,`${k}×5/18 = ${a} m/s.`)},
+r=>{const kh=pick(r,[36,54,72]),sp=kh*5/18,t=ri(r,5,15),l=sp*t;return mcq(r,`${l} m lambi train ${kh} km/h se khambe ko kitne second mein paar karegi?`,t,`${kh} km/h = ${sp} m/s; ${l}/${sp} = ${t} s.`)},
+r=>{const x=ri(r,3,20),c=ri(r,2,15);return mcq(r,`Agar x + ${c} = ${x+c} to x² = ?`,x*x,`x = ${x}; x² = ${x*x}.`)}
+];
+const DN=["Somvaar","Mangalvaar","Budhvaar","Guruvaar","Shukravaar","Shanivaar","Ravivaar"];
+const L=String.fromCharCode,enc=(w,k)=>[...w].map(c=>L(c.charCodeAt(0)+k)).join("");
+const RG=[
+r=>{const a=ri(r,2,15),d=ri(r,2,9),t=[0,1,2,3,4].map(i=>a+i*d);return mcq(r,`${t.join(", ")}, ?`,a+5*d,`Har baar +${d}; agla = ${a+5*d}.`)},
+r=>{const s0=ri(r,1,10),d=ri(r,1,4),t=[s0];let df=d;for(let i=0;i<4;i++){t.push(t[i]+df);df+=2}return mcq(r,`${t.join(", ")}, ?`,t[4]+df,`Antar ${d}, ${d+2}, ${d+4}… (2 se badhta hai); agla antar ${df}, to ${t[4]+df}.`)},
+r=>{const s0=ri(r,1,9),m=pick(r,[2,3,4]),t=[0,1,2,3,4].map(i=>s0*Math.pow(m,i));return mcq(r,`${t.join(", ")}, ?`,s0*Math.pow(m,5),`Har baar ×${m}; agla = ${s0*Math.pow(m,5)}.`)},
+r=>{const n=ri(r,3,15),m=ri(r,16,25);return mcq(r,`${n} : ${n*n} :: ${m} : ?`,m*m,`${n}² = ${n*n}, isliye ${m}² = ${m*m}.`)},
+r=>{const d=ri(r,0,6),n=ri(r,8,40),a=(d+n)%7,o=shuf(r,[a].concat(shuf(r,[0,1,2,3,4,5,6].filter(x=>x!==a)).slice(0,3)));return [`Aaj ${DN[d]} hai. ${n} din baad kaun sa din hoga?`,o.map(x=>DN[x]),o.indexOf(a),`${n} mod 7 = ${n%7}; ${DN[d]} + ${n%7} = ${DN[a]}.`]},
+r=>{const h=ri(r,1,11),m=pick(r,[10,20,30,40,50]),d=Math.abs(30*h-5.5*m),a=d>180?360-d:d;return mcq(r,`${h}:${m} baje ghadi ke kaanton ke beech chhota kon?`,a,`|30×${h} − 5.5×${m}| = ${d}°${d>180?"; chhota kon = "+a+"°":""}.`,x=>x+"°",[a+30,a+60,Math.abs(a-30)])},
+r=>{const k=ri(r,1,5),w=()=>L(65+ri(r,0,17),65+ri(r,0,17),65+ri(r,0,17)),w1=w(),w2=w(),o=shuf(r,[k,k+1,k+2,k+3]);return [`Agar ${w1} = ${enc(w1,k)} to ${w2} = ?`,o.map(x=>enc(w2,x)),o.indexOf(k),`Har akshar +${k} aage; ${w2} → ${enc(w2,k)}.`]}
+];
+function dayNum(s){return Math.floor(Date.UTC(Math.floor(s/10000),Math.floor(s/100)%100-1,s%100)/864e5)}
+function prevSeed(s,k){const d=new Date(Date.UTC(Math.floor(s/10000),Math.floor(s/100)%100-1,s%100)-k*864e5);return d.getUTCFullYear()*10000+(d.getUTCMonth()+1)*100+d.getUTCDate()}
+function makeTest(seed,n){
+  const used=new Set();
+  const mock=seed<1e7;
+  for(let k=1;!mock&&k<=30;k++){const r0=rng(prevSeed(seed,k));shuf(r0,MG).slice(0,8).forEach(g=>used.add(g(r0)[0]));shuf(r0,RG).slice(0,5).forEach(g=>used.add(g(r0)[0]))}
+  const r=rng(seed),out=[],seen=new Set();
+  const add=g=>{for(let t=0;t<40;t++){const q=g(r);if(!used.has(q[0])&&!seen.has(q[0])){seen.add(q[0]);out.push(q);return}}};
+  shuf(r,MG).slice(0,8).forEach(add);shuf(r,RG).slice(0,5).forEach(add);
+  const dn=mock?seed-7000:dayNum(seed);
+  [["English",3],["GK",5],["Haryana GK",4]].forEach(([k,c])=>{const b=shuf(rng(mock?2025:2024),Q[k]);for(let i=0;i<c;i++)out.push(b[(dn*c+i)%b.length])});
+  return shuf(r,out);
+}
+function dseed(off){const d=new Date();d.setDate(d.getDate()-off);return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()}
+function dlabel(off){const d=new Date();d.setDate(d.getDate()-off);return d.toLocaleDateString("en-IN",{day:"numeric",month:"short"})}
+function gen(n,list){const r=rng(Date.now()%1000000),o=[];for(let i=0;i<n;i++)o.push(pick(r,list)(r));return o}
+function home(){
+  const all=Object.keys(Q).filter(k=>!["Maths","Reasoning"].includes(k)).reduce((a,k)=>a.concat(Q[k]),[]);
+  view.innerHTML=`<div class="card"><h2>📅 Aaj ka Daily Mock Test</h2><div class="mut">Har din apne aap naya test banta hai (Maths, Reasoning, English, GK, Haryana GK – 25 sawal).</div><div id="d"></div><div class="mut" style="margin-top:8px">Pichhle din ke tests:</div><div id="pd"></div></div>
+  <div class="card"><h2>Mock Tests 1–20</h2><div id="mt"></div></div>
+  <div class="card"><h2>Subject-wise</h2><div class="mut">Maths aur Reasoning mein har baar naye sawal bante hain.</div><div id="sb"></div></div>`;
+  if(CUSTOM.length){const c=document.createElement("div");c.className="card";c.innerHTML="<h2>📌 Naye Tests</h2>";CUSTOM.forEach(t=>{const b=document.createElement("button");b.textContent=`${t.title} (${t.qs.length} Q • ${t.date})`;b.onclick=()=>run(t.title,()=>t.qs.slice());c.appendChild(b)});view.insertBefore(c,view.firstChild)}
+  const add=(id,t,fn,sm)=>{const b=document.createElement("button");b.textContent=t;if(sm)b.className="sm";b.onclick=fn;document.getElementById(id).appendChild(b)};
+  add("d","Aaj ka Test ("+dlabel(0)+")",()=>run("Daily – "+dlabel(0),()=>makeTest(dseed(0))));
+  for(let i=1;i<=6;i++)add("pd",dlabel(i),()=>run("Daily – "+dlabel(i),()=>makeTest(dseed(i))),1);
+  for(let i=1;i<=20;i++)add("mt","Mock "+i,()=>run("Mock Test "+i,()=>makeTest(7000+i)),1);
+  add("sb","Maths (20, naye)",()=>run("Maths",()=>gen(20,MG)));
+  add("sb","Reasoning (15, naye)",()=>run("Reasoning",()=>gen(15,RG)));
+  ["English","GK","Haryana GK"].forEach(k=>add("sb",`${k} (${Q[k].length})`,()=>run(k,()=>shuf(Math.random,Q[k]))));
+  add("sb",`Full GK+English (${all.length})`,()=>run("Full Static",()=>shuf(Math.random,all)));
+}
+function run(name,fn){
+  const qs=fn();let sc=0,done=0;
+  view.innerHTML=`<div class="bar"><b>${esc(name)}</b><span id="st">0 / ${qs.length} • Sahi: 0</span></div><div id="qs"></div><div class="card" id="res" hidden></div><button id="hm" style="background:transparent;color:var(--pri);border:1px solid var(--pri)">← Wapas</button>`;
+  document.getElementById("hm").onclick=home;
+  const box=document.getElementById("qs"),st=document.getElementById("st");
+  qs.forEach((m,i)=>{
+    const c=document.createElement("div");c.className="card";c.innerHTML=`<b>Q${i+1}. ${esc(m[0])}</b>`;
+    const ob=document.createElement("div");
+    m[1].forEach((t,j)=>{
+      const b=document.createElement("button");b.className="opt";b.textContent=String.fromCharCode(65+j)+". "+t;
+      b.onclick=()=>{
+        if(c.dataset.d)return;c.dataset.d=1;done++;
+        ob.children[m[2]].classList.add("ok");
+        if(j===m[2])sc++;else b.classList.add("bad");
+        const x=document.createElement("div");x.className="sol";x.textContent="Solution: "+m[3];c.appendChild(x);
+        st.textContent=`${done} / ${qs.length} • Sahi: ${sc}`;
+        if(done===qs.length){const r=document.getElementById("res");r.hidden=false;r.innerHTML=`<h2>Score: ${sc} / ${qs.length} (${Math.round(sc*100/qs.length)}%)</h2><button id="rt">Dobara</button>`;document.getElementById("rt").onclick=()=>run(name,fn);r.scrollIntoView({behavior:"smooth"})}
+      };
+      ob.appendChild(b);
+    });
+    c.appendChild(ob);box.appendChild(c);
+  });
+}
+
+const esc=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+let CUSTOM=[];try{CUSTOM=JSON.parse(document.getElementById("cd").textContent)}catch(e){}
+async function publishCustom(list){
+  const art=await claude.use("artifact");if(!art)throw {code:"not_granted"};
+  const tpl=document.getElementById("tpl").textContent;
+  const raw=tpl.split("<\\/script>").join("<"+"/script>");
+  const cd=JSON.stringify(list).split("<").join("\\u003c");
+  const html=raw.split("@@"+"CD"+"@@").join(cd).split("@@"+"TPL"+"@@").join(tpl);
+  await art.publish(html);
+}
+function parseQs(t){
+  const out=[],L=t.split("\n").map(x=>x.trim()).filter(Boolean);
+  for(let i=0;i<L.length;i++){
+    const p=L[i].split("|").map(x=>x.trim());
+    if(p.length<6)throw new Error(`Line ${i+1}: format hai  Sawal | A | B | C | D | Sahi | Solution`);
+    const ai="ABCD".indexOf(p[5].toUpperCase().charAt(0)),an=ai>=0?ai:parseInt(p[5])-1;
+    if(!(an>=0&&an<4))throw new Error(`Line ${i+1}: Sahi option A, B, C ya D likhein`);
+    out.push([p[0],p.slice(1,5),an,p[6]||"—"]);
+  }
+  if(!out.length)throw new Error("Koi sawal nahi mila");return out;
+}
+function adminView(){
+  view.innerHTML=`<div class="card"><h2>⚙ Admin – Naya Test jodein</h2><div class="mut">Har line mein ek sawal. Format:<br><code>Sawal | A | B | C | D | Sahi (A/B/C/D) | Solution</code></div>
+  <input id="at" placeholder="Test ka naam (jaise: Daily Test 5 Oct)"><textarea id="aq" rows="9" placeholder="2+2 kitna hai? | 3 | 4 | 5 | 6 | B | 2+2 = 4"></textarea>
+  <div class="err" id="ae"></div><button id="ap">Publish karein</button><button id="ab" style="background:transparent;color:var(--pri);border:1px solid var(--pri)">← Wapas</button></div>
+  <div class="card"><h2>Admin ke tests</h2><div id="al"></div></div>`;
+  document.getElementById("ab").onclick=home;
+  const er=m=>document.getElementById("ae").textContent=m;
+  const fail=e=>er(e&&e.code==="not_writer"?"Aap is page ke owner nahi hain.":e&&e.code==="conflict"?"":(e&&e.message)||"Publish nahi ho paya, dobara koshish karein.");
+  document.getElementById("ap").onclick=async()=>{
+    try{
+      const t=document.getElementById("at").value.trim();if(!t)throw new Error("Test ka naam likhein");
+      const qs=parseQs(document.getElementById("aq").value);
+      er("Publish ho raha hai…");
+      await publishCustom([{id:Date.now(),title:t,date:dlabel(0),qs}].concat(CUSTOM));
+    }catch(e){fail(e)}
+  };
+  const al=document.getElementById("al");
+  if(!CUSTOM.length)al.innerHTML='<span class="mut">Abhi koi test nahi.</span>';
+  CUSTOM.forEach(t=>{
+    const d=document.createElement("div");d.style.cssText="display:flex;justify-content:space-between;gap:8px;align-items:center;padding:6px 0";
+    d.innerHTML=`<span>${esc(t.title)} <span class="mut">(${t.qs.length} Q • ${esc(t.date)})</span></span>`;
+    const b=document.createElement("button");b.className="sm";b.style.background="var(--bad)";b.textContent="Delete";
+    b.onclick=async()=>{if(confirm("Ye test hata dein?")){try{await publishCustom(CUSTOM.filter(x=>x.id!==t.id))}catch(e){fail(e)}}};
+    d.appendChild(b);al.appendChild(d);
+  });
+}
+document.getElementById("adm").onclick=adminView;
+(async()=>{try{if(!window.claude)return;const u=await claude.use("user"),a=await claude.use("artifact");if(u&&a&&await u.isOwner())document.getElementById("adm").hidden=false}catch(e){}})();
+setTimeout(()=>{const sp=document.getElementById("splash");if(sp)sp.remove()},2800);
+document.getElementById("splash").onclick=()=>document.getElementById("splash").remove();
+<\/script>
+</body>
+</html>
+</script>
+<div class="wrap" id="gate"><div class="card">
+<svg class="lg"><use href="#logo"/></svg>
+<h1>Happy Dhiman – Mock Test Portal</h1>
+<p class="mut">SSC CGL • Delhi Police • Haryana Police. Password daalein.</p>
+<input id="pw" type="password" placeholder="Password" autocomplete="off"><p class="err" id="err"></p><button id="go">Enter</button>
+</div></div>
+
+<div class="wrap" id="app" hidden>
+<div class="card brand"><svg class="lg"><use href="#logo"/></svg><div><h1>Happy Dhiman</h1><div class="mut">Mock Test Portal • SSC CGL • Delhi Police • Haryana Police</div></div><button id="adm" class="sm" hidden>⚙ Admin</button></div>
+<div id="view"></div>
+</div>
+
+<script>
+const HASH="f96881beb3ca7ef4c1df213c455bfba23927f60ddb94cc171f948afc719f96ed";
+async function sha(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+async function unlock(){try{if(await sha(document.getElementById("pw").value)===HASH){show()}else document.getElementById("err").textContent="Galat password."}catch(e){document.getElementById("err").textContent="Is browser mein password check nahi ho pa raha. Chrome mein kholein."}}
+function show(){document.getElementById("gate").hidden=true;document.getElementById("app").hidden=false;home()}
+document.getElementById("go").onclick=unlock;document.getElementById("pw").onkeydown=e=>{if(e.key==="Enter")unlock()};
+
+// Format: [sawal, [options], sahi_option_index(0-3), solution]
+const Q={
+"Maths":[
+["480 ka 25% kitna hai?",["100","120","140","160"],1,"480 × 25/100 = 120."],
+["CP ₹500, SP ₹600 – profit % kitna?",["10%","15%","20%","25%"],2,"Profit 100; 100/500 × 100 = 20%."],
+["12 mazdoor ek kaam 10 din mein karte hain. 20 mazdoor kitne din lenge?",["4","5","6","8"],2,"12×10 = 120 man-days; 120/20 = 6 din."],
+["5 sankhyaon ka average 20 hai. Unka yog?",["25","80","100","120"],2,"Yog = average × count = 20×5 = 100."],
+["₹2000 par 5% saal dar se 3 saal ka SI?",["₹200","₹300","₹400","₹500"],1,"SI = 2000×5×3/100 = ₹300."],
+["72 km/h ko m/s mein badlo.",["10","15","20","25"],2,"72 × 5/18 = 20 m/s."],
+["12 aur 18 ka LCM?",["24","36","54","72"],1,"12=2²×3, 18=2×3²; LCM = 2²×3² = 36."],
+["36 aur 48 ka HCF?",["6","8","12","24"],2,"36=2²×3², 48=2⁴×3; HCF = 2²×3 = 12."],
+["√1521 = ?",["37","38","39","41"],2,"39 × 39 = 1521."],
+["A:B = 2:3 aur A+B = 50. A = ?",["15","20","25","30"],1,"A = 50 × 2/5 = 20."],
+["150 m lambi train 54 km/h se khambe ko kitne second mein paar karegi?",["8","10","12","15"],1,"54 km/h = 15 m/s; 150/15 = 10 s."],
+["Marked price ₹800 par 25% chhoot. Selling price?",["₹550","₹600","₹650","₹700"],1,"Chhoot = 200; SP = 600."],
+["a+b = 10, ab = 21 ho to a²+b² = ?",["52","58","62","79"],1,"a²+b² = (a+b)² − 2ab = 100 − 42 = 58."],
+["7 cm radius ke vritt ka kshetrafal? (π = 22/7)",["44","144","154","164"],2,"πr² = 22/7 × 49 = 154 cm²."],
+["Samaan shatbhuj (hexagon) ka ek antah kon?",["108°","120°","135°","150°"],1,"(n−2)×180/n = 4×180/6 = 120°."]],
+"Reasoning":[
+["3, 6, 11, 18, 27, ?",["36","38","40","42"],1,"Antar 3,5,7,9,11 → 27+11 = 38."],
+["Agar CAT = DBU, to DOG = ?",["EPH","EOH","FPH","EPG"],0,"Har akshar +1: D→E, O→P, G→H."],
+["Alag chuniye:",["Seb","Aam","Aloo","Kela"],2,"Aloo sabzi hai, baaki phal."],
+["A ki maa ka iklauta bhai A ka kaun hai?",["Pita","Chacha","Mama","Dada"],2,"Maa ka bhai = mama."],
+["Ek aadmi 5 km Uttar, phir 5 km Purv, phir 5 km Dakshin gaya. Shuruaat se doori?",["0","5 km","10 km","15 km"],1,"Uttar–Dakshin cancel; sirf 5 km Purv bacha."],
+["A, C, F, J, O, ?",["T","U","V","W"],1,"Antar 2,3,4,5,6; O(15)+6 = 21 = U."],
+["3:00 baje ghadi ke kaanton ke beech kon?",["60°","90°","120°","180°"],1,"3 ghante = 3×30° = 90°."],
+["A=1, B=2 … to CAB ka yog?",["5","6","7","8"],1,"3+1+2 = 6."],
+["8 : 64 :: 5 : ?",["10","25","40","125"],1,"8² = 64, isliye 5² = 25."],
+["Aaj Somvaar hai. 10 din baad kaun sa din?",["Buddhvaar","Guruvaar","Shukravaar","Shanivaar"],1,"10 mod 7 = 3; Somvaar+3 = Guruvaar."]],
+"English":[
+["Synonym of 'Abundant':",["Scarce","Plentiful","Rare","Tiny"],1,"Abundant = Plentiful (bahut)."],
+["Antonym of 'Ancient':",["Old","Modern","Past","Historic"],1,"Ancient (puraana) ka ulta Modern."],
+["One word: 'Kitabon se prem karne wala'",["Bibliophile","Philanthropist","Misogynist","Optimist"],0,"Bibliophile = book lover."],
+["Idiom 'A piece of cake' ka matlab?",["Mithai","Bahut aasaan","Mehnga","Mushkil"],1,"Very easy task."],
+["He ___ to school every day.",["go","goes","going","gone"],1,"Third person singular + present: goes."],
+["Passive: 'She writes a letter.'",["A letter is written by her","A letter was written by her","A letter writes her","A letter is wrote by her"],0,"Simple present passive: is + V3."],
+["Sahi spelling chuniye:",["Neccessary","Necessary","Necesary","Neccesary"],1,"Necessary (1 c, 2 s)."],
+["Antonym of 'Generous':",["Kind","Stingy","Rich","Brave"],1,"Generous ka ulta Stingy (kanjoos)."],
+["Idiom 'Once in a blue moon':",["Bahut kabhi-kabhi","Roz","Raat ko","Jaldi"],0,"Very rarely."],
+["___ hour has passed.",["A","An","The an","No article"],1,"'hour' ki dhwani vowel se shuru, isliye An."],
+["Synonym of 'Brave':",["Timid","Courageous","Lazy","Weak"],1,"Brave = Courageous."],
+["Antonym of 'Victory':",["Win","Defeat","Success","Triumph"],1,"Victory ka ulta Defeat."],
+["'Ephemeral' ka matlab?",["Short-lived","Eternal","Huge","Silent"],0,"Thode samay ka."],
+["Plural of 'child':",["Childs","Children","Childes","Childrens"],1,"Children."],
+["I ___ him yesterday.",["see","saw","seen","seeing"],1,"Past tense: saw."],
+["Idiom 'Break the ice':",["Barf todna","Baatcheet shuru karna","Ladai","Chup rehna"],1,"Anjaan logon mein baat shuru karna."],
+["Study of birds:",["Ornithology","Zoology","Ecology","Biology"],0,"Ornithology."],
+["Synonym of 'Huge':",["Tiny","Enormous","Narrow","Soft"],1,"Huge = Enormous."],
+["Synonym of 'Rapid':",["Slow", "Swift", "Late", "Weak"],1,"Rapid = Swift (tez)."],
+["Antonym of 'Expand':",["Grow", "Contract", "Spread", "Extend"],1,"Expand (failana) ka ulta Contract (sikodna)."],
+["One word: 'Bahut si bhashayein bolne wala'",["Polyglot", "Pedestrian", "Novice", "Orator"],0,"Polyglot = many languages speaker."],
+["Idiom 'Cry over spilt milk' ka matlab?",["Doodh girana", "Beete nuksaan par pachhtana", "Bahut rona", "Jaldi karna"],1,"Past loss par afsos karna bekaar hai."],
+["She is good ___ Maths.",["in", "on", "at", "of"],2,"'Good at' sahi preposition hai."],
+["Plural of 'Mouse':",["Mouses", "Mice", "Mices", "Mouse"],1,"Mouse → Mice (irregular)."],
+["Sahi spelling chuniye:",["Accommodation", "Acommodation", "Accomodation", "Acomodation"],0,"Accommodation – double c, double m."],
+["Synonym of 'Candid':",["Secretive", "Frank", "Rude", "Shy"],1,"Candid = Frank (saaf-saaf bolne wala)."],
+["Antonym of 'Transparent':",["Clear", "Opaque", "Thin", "Bright"],1,"Transparent ka ulta Opaque."],
+["Idiom 'Hit the nail on the head':",["Keel thokna", "Bilkul sahi baat kehna", "Gussa karna", "Chot lagna"],1,"Exactly right baat kehna."],
+["Passive: 'They are playing cricket.'",["Cricket is played by them.", "Cricket is being played by them.", "Cricket was being played by them.", "Cricket has been played by them."],1,"Present continuous passive: is/are + being + V3."],
+["Neither of the boys ___ present.",["were", "was", "are", "have been"],1,"'Neither of' ke saath singular verb: was."],
+["Study of insects:",["Etymology", "Entomology", "Ornithology", "Ecology"],1,"Entomology = insects ka adhyayan."],
+["Synonym of 'Diligent':",["Lazy", "Hardworking", "Careless", "Weak"],1,"Diligent = Hardworking."]],
+"GK":[
+["Bharat ke pehle pradhanmantri?",["Sardar Patel","J. L. Nehru","Gandhi","Rajendra Prasad"],1,"Jawaharlal Nehru (1947)."],
+["Australia ki rajdhani?",["Sydney","Melbourne","Canberra","Perth"],2,"Canberra."],
+["Anuchhed 21 kis se juda hai?",["Samanta","Jeevan aur vyaktigat swatantrata","Shiksha","Dharm"],1,"Right to life and personal liberty."],
+["'Discovery of India' kisne likhi?",["Gandhi","Nehru","Tagore","Ambedkar"],1,"J. L. Nehru ne."],
+["Sabse bada grah?",["Shani","Jupiter","Prithvi","Mangal"],1,"Jupiter (Brihaspati)."],
+["Vitamin C ki kami se kaun sa rog?",["Rickets","Scurvy","Night blindness","Beriberi"],1,"Scurvy."],
+["RBI ka mukhyalaya?",["Delhi","Mumbai","Kolkata","Chennai"],1,"Mumbai."],
+["Quit India Movement kab shuru hua?",["1930","1940","1942","1945"],2,"August 1942."],
+["Fire extinguisher mein kaun si gas?",["O₂","CO₂","N₂","H₂"],1,"Carbon dioxide."],
+["Sone ka rasayanik sanket?",["Ag","Au","Fe","Gd"],1,"Au (Aurum)."],
+["Plassey ka yuddh kab hua?",["1757","1764","1857","1526"],0,"1757."],
+["Mool kartavya kis sanshodhan se joode?",["42wan","44wan","73wan","86wan"],0,"42va sanshodhan (1976)."],
+["Lok Sabha chunav ladne ki nyunatam aayu?",["21","25","30","35"],1,"25 varsh."],
+["Rashtrapati ka karyakal?",["4 varsh","5 varsh","6 varsh","7 varsh"],1,"5 varsh."],
+["Delhi Police ka mukhyalaya kahan hai?",["ITO","Karol Bagh","Dwarka","Rohini"],0,"ITO ke paas (Jai Singh Marg)."],
+["Taj Mahal kis nadi ke kinare hai?",["Ganga","Yamuna","Gomti","Chambal"],1,"Agra mein Yamuna ke kinare."],
+["Sound (dhwani) ki taivrata ki ikai?",["Hertz","Decibel","Watt","Newton"],1,"Decibel (dB)."],
+["Samvidhan sabha ke adhyaksh?",["Ambedkar","Rajendra Prasad","Nehru","Patel"],1,"Dr. Rajendra Prasad."],
+["Prarup (Drafting) Samiti ke adhyaksh?",["Ambedkar","Nehru","Patel","Azad"],0,"Dr. B. R. Ambedkar."],
+["Universal donor blood group?",["A+","AB+","O negative","B+"],2,"O negative."],
+["Haemoglobin mein kaun sa tatva hota hai?",["Calcium","Loha (Iron)","Sodium","Zinc"],1,"Iron (Fe)."],
+["Dhoop se kaun sa vitamin milta hai?",["A","B","C","D"],3,"Vitamin D."],
+["Jallianwala Bagh kaand kab hua?",["1905","1919","1930","1942"],1,"13 April 1919, Amritsar."],
+["GST kab lagu hua?",["1 Apr 2016","1 Jul 2017","1 Jan 2018","15 Aug 2017"],1,"1 July 2017."],
+["Haldighati ka yuddh kab hua?",["1526","1556","1576","1605"],2,"1576: Akbar vs Maharana Pratap."],
+["Rajya Sabha ke sabhapati kaun hote hain?",["Pradhanmantri","Uprashtrapati","Speaker","Rashtrapati"],1,"Bharat ke Uprashtrapati."],
+["Sabse adhik aabadi wala rajya?",["Bihar","Maharashtra","Uttar Pradesh","MP"],2,"Uttar Pradesh."],
+["Kshetrafal mein sabse bada rajya?",["Rajasthan","MP","Maharashtra","UP"],0,"Rajasthan."],
+["Ozone parat kisse bachati hai?",["Infrared","Paraybaingani (UV) kiran","Radio tarang","Sound"],1,"Sooraj ki UV kirnon se."],
+["Bharat mein bahne wali sabse lambi nadi?",["Yamuna", "Ganga", "Godavari", "Narmada"],1,"Ganga (~2525 km)."],
+["Bharat ka Samvidhan kab lagu hua?",["15 Aug 1947", "26 Nov 1949", "26 Jan 1950", "2 Oct 1950"],2,"26 January 1950."],
+["Rajya Sabha ke padasin (Chairman) kaun hote hain?",["Pradhanmantri", "Upraashtrapati", "Rashtrapati", "Lok Sabha adhyaksh"],1,"Upraashtrapati."],
+["Kshetrafal mein Bharat ka sabse bada rajya?",["Madhya Pradesh", "Rajasthan", "Maharashtra", "UP"],1,"Rajasthan."],
+["Kshetrafal mein Bharat ka sabse chhota rajya?",["Sikkim", "Goa", "Tripura", "Haryana"],1,"Goa."],
+["Jallianwala Bagh narsanhar kab hua?",["1905", "1919", "1922", "1930"],1,"13 April 1919, Amritsar."],
+["Ashoka ke adhiktar abhilekh kis lipi mein hain?",["Devanagari", "Brahmi", "Kharoshthi", "Tamil"],1,"Adhiktar Brahmi lipi mein."],
+["Chauri Chaura kand kab hua?",["1919", "1920", "1922", "1930"],2,"1922; Asahyog Andolan waapas liya gaya."],
+["Prakash sanshleshan mein kaun si gas nikalti hai?",["CO2", "Oxygen", "Nitrogen", "Hydrogen"],1,"Oxygen (O2)."],
+["Manav sharir ki sabse badi granthi?",["Agnashay", "Yakrit (Liver)", "Thyroid", "Pituitary"],1,"Liver sabse badi granthi hai."],
+["Vitamin K kis kaam ke liye zaroori hai?",["Haddi", "Khoon ka jamna", "Aankh", "Tvacha"],1,"Blood clotting."],
+["Bharat ka pehla upgrah?",["Bhaskara", "Aryabhata", "INSAT-1A", "Rohini"],1,"Aryabhata (1975)."],
+["ISRO ka mukhyalaya kahan hai?",["Mumbai", "Bengaluru", "Hyderabad", "Sriharikota"],1,"Bengaluru."],
+["Chandrayaan-3 ki soft landing kab hui?",["14 Jul 2023", "23 Aug 2023", "2 Sep 2023", "15 Aug 2023"],1,"23 August 2023."],
+["GST Bharat mein kab lagu hua?",["1 Apr 2016", "1 Jul 2017", "1 Jan 2018", "1 Apr 2017"],1,"1 July 2017."],
+["Bharat ka rashtriya pakshi?",["Kabutar", "Mor", "Tota", "Koyal"],1,"Mor (Peacock)."],
+["Bharat ka rashtriya pashu?",["Sher", "Hathi", "Bagh (Tiger)", "Tendua"],2,"Bagh (Tiger)."],
+["'Vande Mataram' ke rachayita?",["Tagore", "Bankim Chandra Chatterjee", "Iqbal", "Sarojini Naidu"],1,"Bankim Chandra Chatterjee."],
+["Buland Darwaza kahan hai?",["Agra Fort", "Fatehpur Sikri", "Delhi", "Lucknow"],1,"Fatehpur Sikri."],
+["73va sanshodhan kis se juda hai?",["Nagar Palika", "Panchayati Raj", "Mool Adhikar", "Rajya Sabha"],1,"Panchayati Raj."],
+["Sabse bada mahasagar?",["Atlantic", "Pacific", "Indian", "Arctic"],1,"Pacific."]],
+"Haryana GK":[
+["Haryana kab bana?",["1 Nov 1956","1 Nov 1966","26 Jan 1950","15 Aug 1966"],1,"1 November 1966 (Punjab se alag)."],
+["Haryana ke pehle mukhyamantri?",["Bansi Lal","Bhagwat Dayal Sharma","Devi Lal","Bhajan Lal"],1,"Pt. Bhagwat Dayal Sharma."],
+["Haryana ka rajya pakshi?",["Mor","Kala Titar","Kabutar","Tota"],1,"Black Francolin (Kala Titar)."],
+["Haryana ka rajya pashu?",["Blackbuck (Krishna mrig)","Sher","Hathi","Neelgai"],0,"Blackbuck."],
+["Surajkund Mela kahan lagta hai?",["Rohtak","Faridabad","Hisar","Karnal"],1,"Faridabad."],
+["Pinjore Garden kis zile mein hai?",["Ambala","Panchkula","Sonipat","Rewari"],1,"Panchkula (Mughal-style garden)."],
+["Panipat ka pehla yuddh kab hua?",["1526","1556","1761","1192"],0,"1526: Babur vs Ibrahim Lodi."],
+["Tilyar Lake kahan hai?",["Rohtak","Jind","Bhiwani","Sirsa"],0,"Rohtak."],
+["Haryana ka rajya vriksh?",["Neem","Peepal","Bargad","Aam"],1,"Peepal."],
+["Haryana High Court kahan hai?",["Delhi","Chandigarh","Gurugram","Ambala"],1,"Chandigarh (Punjab & Haryana HC)."],
+["Brahma Sarovar kahan hai?",["Kurukshetra","Panipat","Karnal","Jind"],0,"Kurukshetra."],
+["Haryana ka rajya phool?",["Gulab","Kamal (Lotus)","Genda","Chameli"],1,"Lotus."],
+["Haryana Vidhan Sabha mein kitni seats hain?",["70","80","90","100"],2,"90 seats."],
+["Haryana se Lok Sabha ki kitni seats hain?",["8","10","12","13"],1,"10 seats."],
+["Rakhigarhi (Harappan sthal) kis zile mein hai?",["Hisar","Rohtak","Sirsa","Palwal"],0,"Hisar."],
+["Haryana ka prasiddh lok natya?",["Saang","Yakshagana","Nautanki UP","Bhavai"],0,"Saang."],
+["Haryana ka sabse zyada aabadi wala shahar?",["Gurugram","Faridabad","Panipat","Ambala"],1,"Faridabad."],
+["Haryana ki purvi seema par kaun si nadi hai?",["Yamuna","Sutlej","Narmada","Chambal"],0,"Yamuna (UP ke saath seema)."],
+["Haryana ki rajdhani?",["Ambala", "Chandigarh", "Gurugram", "Rohtak"],1,"Chandigarh (Punjab ke saath saajhi)."],
+["Gita Upadesh sthal 'Jyotisar' kis zile mein hai?",["Karnal", "Kurukshetra", "Panipat", "Jind"],1,"Kurukshetra."],
+["Kshetrafal mein Haryana ka sabse bada zila?",["Hisar", "Sirsa", "Bhiwani", "Fatehabad"],1,"Sirsa."],
+["Morni Hills kis zile mein hain?",["Ambala", "Panchkula", "Yamunanagar", "Sonipat"],1,"Panchkula."],
+["Sultanpur Bird Sanctuary kis zile mein hai?",["Faridabad", "Gurugram", "Jhajjar", "Rewari"],1,"Gurugram."],
+["Kalesar National Park kis zile mein hai?",["Panchkula", "Yamunanagar", "Karnal", "Ambala"],1,"Yamunanagar."],
+["Panipat ko kis naam se jana jata hai?",["City of Weavers", "Steel City", "Mini Cuba", "Oil City"],0,"Handloom ke liye 'City of Weavers'."],
+["Panipat ka teesra yuddh kab hua?",["1526", "1556", "1761", "1857"],2,"1761, Marathe vs Ahmad Shah Abdali."],
+["Panipat ka doosra yuddh kab hua?",["1526", "1556", "1576", "1761"],1,"1556, Akbar (Bairam Khan) vs Hemu."],
+["Sheikh Chilli ka maqbara kahan hai?",["Thanesar", "Rohtak", "Hisar", "Narnaul"],0,"Thanesar (Kurukshetra)."],
+["Haryana ki rajkiya bhasha?",["Punjabi", "Hindi", "Haryanvi", "Urdu"],1,"Hindi (Punjabi doosri bhasha)."],
+["Hisar shahar ki sthapana kisne ki?",["Akbar", "Firoz Shah Tughlaq", "Babar", "Shahjahan"],1,"Firoz Shah Tughlaq (1354)."],
+["Bhiwani ko kis naam se jana jata hai?",["Mini Cuba", "Steel City", "Rice Bowl", "City of Weavers"],0,"Boxing ke liye 'Mini Cuba'."],
+["Haryana ki sabse oonchi chotti?",["Karoh Peak", "Dhosi", "Tosham", "Bir"],0,"Karoh Peak (Morni Hills)."]]
+};
+
+const view=document.getElementById("view");
+function rng(seed){let a=seed>>>0;return function(){a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const ri=(r,a,b)=>a+Math.floor(r()*(b-a+1)),pick=(r,a)=>a[Math.floor(r()*a.length)];
+function shuf(r,a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function mcq(r,q,ans,sol,fmt,cands){
+  fmt=fmt||(x=>String(x));const set=[];
+  (cands||[]).forEach(c=>{if(c!==ans&&c>0&&!set.includes(c))set.push(c)});
+  const st=Math.max(1,Math.round(ans/10));
+  for(let n=1;set.length<3;n++){[ans+n*st,ans-n*st].forEach(c=>{if(set.length<3&&c>0&&c!==ans&&!set.includes(c))set.push(c)})}
+  const o=shuf(r,[ans].concat(set.slice(0,3)));return [q,o.map(fmt),o.indexOf(ans),sol];
+}
+const Rs=x=>"₹"+x,Pc=x=>x+"%";
+const MG=[
+r=>{const p=pick(r,[10,15,20,25,30,40,45,60]),n=ri(r,5,40)*20,a=n*p/100;return mcq(r,`${n} ka ${p}% kitna hai?`,a,`${n} × ${p}/100 = ${a}.`)},
+r=>{const p=pick(r,[10,20,25,30,40,50]),cp=ri(r,5,30)*20,sp=cp+cp*p/100;return mcq(r,`CP ₹${cp}, SP ₹${sp}. Profit % kitna?`,p,`Profit ${sp-cp}; ${sp-cp}/${cp}×100 = ${p}%.`,Pc,[p+5,p+10,p-5])},
+r=>{const P=ri(r,2,10)*500,R=pick(r,[4,5,6,8,10]),t=pick(r,[2,3,4,5]),a=P*R*t/100;return mcq(r,`₹${P} par ${R}% saalana dar se ${t} saal ka SI?`,a,`SI = ${P}×${R}×${t}/100 = ₹${a}.`,Rs)},
+r=>{const sp=ri(r,8,18)*5,t=ri(r,2,6),a=sp*t;return mcq(r,`Gaadi ${sp} km/h se ${t} ghante chalti hai. Doori?`,a,`Doori = ${sp}×${t} = ${a} km.`,x=>x+" km")},
+r=>{const av=ri(r,10,60),n=ri(r,4,9),a=av*n;return mcq(r,`${n} sankhyaon ka average ${av} hai. Unka yog?`,a,`Yog = ${av}×${n} = ${a}.`)},
+r=>{const x=ri(r,1,5),y=x+ri(r,1,4),k=ri(r,2,12),a=k*x;return mcq(r,`A:B = ${x}:${y} aur A+B = ${k*(x+y)}. A = ?`,a,`A = ${k*(x+y)}×${x}/${x+y} = ${a}.`)},
+r=>{const [x,y]=pick(r,[[2,3],[3,4],[2,5],[3,5],[4,5],[3,7]]),m=ri(r,2,6),A=x*m,B=y*m;return r()<.5?mcq(r,`${A} aur ${B} ka LCM?`,x*y*m,`HCF = ${m}; LCM = ${A}×${B}/${m} = ${x*y*m}.`):mcq(r,`${A} aur ${B} ka HCF?`,m,`Common factor ${m}; HCF = ${m}.`)},
+r=>{const n=ri(r,12,35);return mcq(r,`√${n*n} = ?`,n,`${n} × ${n} = ${n*n}.`)},
+r=>{const m1=pick(r,[12,15,20,24,30]),d1=pick(r,[10,12,15,20]),T=m1*d1,ds=[];for(let m=5;m<=60;m++)if(T%m===0&&m!==m1)ds.push(m);const m2=pick(r,ds),a=T/m2;return mcq(r,`${m1} mazdoor ek kaam ${d1} din mein karte hain. ${m2} mazdoor kitne din lenge?`,a,`Kaam = ${m1}×${d1} = ${T}; ${T}/${m2} = ${a} din.`)},
+r=>{const mp=ri(r,4,20)*100,d=pick(r,[10,20,25,30]),a=mp*(100-d)/100;return mcq(r,`Marked price ₹${mp} par ${d}% chhoot. Selling price?`,a,`SP = ${mp}×${100-d}/100 = ₹${a}.`,Rs)},
+r=>{const R=pick(r,[7,14,21]),a=22*R*R/7;return mcq(r,`${R} cm radius ke vritt ka kshetrafal? (π = 22/7)`,a,`πr² = 22/7×${R}×${R} = ${a} cm².`)},
+r=>{const k=pick(r,[18,36,54,72,90,108,126,144,162,180]),a=k*5/18;return mcq(r,`${k} km/h ko m/s mein badlo.`,a,`${k}×5/18 = ${a} m/s.`)},
+r=>{const kh=pick(r,[36,54,72]),sp=kh*5/18,t=ri(r,5,15),l=sp*t;return mcq(r,`${l} m lambi train ${kh} km/h se khambe ko kitne second mein paar karegi?`,t,`${kh} km/h = ${sp} m/s; ${l}/${sp} = ${t} s.`)},
+r=>{const x=ri(r,3,20),c=ri(r,2,15);return mcq(r,`Agar x + ${c} = ${x+c} to x² = ?`,x*x,`x = ${x}; x² = ${x*x}.`)}
+];
+const DN=["Somvaar","Mangalvaar","Budhvaar","Guruvaar","Shukravaar","Shanivaar","Ravivaar"];
+const L=String.fromCharCode,enc=(w,k)=>[...w].map(c=>L(c.charCodeAt(0)+k)).join("");
+const RG=[
+r=>{const a=ri(r,2,15),d=ri(r,2,9),t=[0,1,2,3,4].map(i=>a+i*d);return mcq(r,`${t.join(", ")}, ?`,a+5*d,`Har baar +${d}; agla = ${a+5*d}.`)},
+r=>{const s0=ri(r,1,10),d=ri(r,1,4),t=[s0];let df=d;for(let i=0;i<4;i++){t.push(t[i]+df);df+=2}return mcq(r,`${t.join(", ")}, ?`,t[4]+df,`Antar ${d}, ${d+2}, ${d+4}… (2 se badhta hai); agla antar ${df}, to ${t[4]+df}.`)},
+r=>{const s0=ri(r,1,9),m=pick(r,[2,3,4]),t=[0,1,2,3,4].map(i=>s0*Math.pow(m,i));return mcq(r,`${t.join(", ")}, ?`,s0*Math.pow(m,5),`Har baar ×${m}; agla = ${s0*Math.pow(m,5)}.`)},
+r=>{const n=ri(r,3,15),m=ri(r,16,25);return mcq(r,`${n} : ${n*n} :: ${m} : ?`,m*m,`${n}² = ${n*n}, isliye ${m}² = ${m*m}.`)},
+r=>{const d=ri(r,0,6),n=ri(r,8,40),a=(d+n)%7,o=shuf(r,[a].concat(shuf(r,[0,1,2,3,4,5,6].filter(x=>x!==a)).slice(0,3)));return [`Aaj ${DN[d]} hai. ${n} din baad kaun sa din hoga?`,o.map(x=>DN[x]),o.indexOf(a),`${n} mod 7 = ${n%7}; ${DN[d]} + ${n%7} = ${DN[a]}.`]},
+r=>{const h=ri(r,1,11),m=pick(r,[10,20,30,40,50]),d=Math.abs(30*h-5.5*m),a=d>180?360-d:d;return mcq(r,`${h}:${m} baje ghadi ke kaanton ke beech chhota kon?`,a,`|30×${h} − 5.5×${m}| = ${d}°${d>180?"; chhota kon = "+a+"°":""}.`,x=>x+"°",[a+30,a+60,Math.abs(a-30)])},
+r=>{const k=ri(r,1,5),w=()=>L(65+ri(r,0,17),65+ri(r,0,17),65+ri(r,0,17)),w1=w(),w2=w(),o=shuf(r,[k,k+1,k+2,k+3]);return [`Agar ${w1} = ${enc(w1,k)} to ${w2} = ?`,o.map(x=>enc(w2,x)),o.indexOf(k),`Har akshar +${k} aage; ${w2} → ${enc(w2,k)}.`]}
+];
+function dayNum(s){return Math.floor(Date.UTC(Math.floor(s/10000),Math.floor(s/100)%100-1,s%100)/864e5)}
+function prevSeed(s,k){const d=new Date(Date.UTC(Math.floor(s/10000),Math.floor(s/100)%100-1,s%100)-k*864e5);return d.getUTCFullYear()*10000+(d.getUTCMonth()+1)*100+d.getUTCDate()}
+function makeTest(seed,n){
+  const used=new Set();
+  const mock=seed<1e7;
+  for(let k=1;!mock&&k<=30;k++){const r0=rng(prevSeed(seed,k));shuf(r0,MG).slice(0,8).forEach(g=>used.add(g(r0)[0]));shuf(r0,RG).slice(0,5).forEach(g=>used.add(g(r0)[0]))}
+  const r=rng(seed),out=[],seen=new Set();
+  const add=g=>{for(let t=0;t<40;t++){const q=g(r);if(!used.has(q[0])&&!seen.has(q[0])){seen.add(q[0]);out.push(q);return}}};
+  shuf(r,MG).slice(0,8).forEach(add);shuf(r,RG).slice(0,5).forEach(add);
+  const dn=mock?seed-7000:dayNum(seed);
+  [["English",3],["GK",5],["Haryana GK",4]].forEach(([k,c])=>{const b=shuf(rng(mock?2025:2024),Q[k]);for(let i=0;i<c;i++)out.push(b[(dn*c+i)%b.length])});
+  return shuf(r,out);
+}
+function dseed(off){const d=new Date();d.setDate(d.getDate()-off);return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()}
+function dlabel(off){const d=new Date();d.setDate(d.getDate()-off);return d.toLocaleDateString("en-IN",{day:"numeric",month:"short"})}
+function gen(n,list){const r=rng(Date.now()%1000000),o=[];for(let i=0;i<n;i++)o.push(pick(r,list)(r));return o}
+function home(){
+  const all=Object.keys(Q).filter(k=>!["Maths","Reasoning"].includes(k)).reduce((a,k)=>a.concat(Q[k]),[]);
+  view.innerHTML=`<div class="card"><h2>📅 Aaj ka Daily Mock Test</h2><div class="mut">Har din apne aap naya test banta hai (Maths, Reasoning, English, GK, Haryana GK – 25 sawal).</div><div id="d"></div><div class="mut" style="margin-top:8px">Pichhle din ke tests:</div><div id="pd"></div></div>
+  <div class="card"><h2>Mock Tests 1–20</h2><div id="mt"></div></div>
+  <div class="card"><h2>Subject-wise</h2><div class="mut">Maths aur Reasoning mein har baar naye sawal bante hain.</div><div id="sb"></div></div>`;
+  if(CUSTOM.length){const c=document.createElement("div");c.className="card";c.innerHTML="<h2>📌 Naye Tests</h2>";CUSTOM.forEach(t=>{const b=document.createElement("button");b.textContent=`${t.title} (${t.qs.length} Q • ${t.date})`;b.onclick=()=>run(t.title,()=>t.qs.slice());c.appendChild(b)});view.insertBefore(c,view.firstChild)}
+  const add=(id,t,fn,sm)=>{const b=document.createElement("button");b.textContent=t;if(sm)b.className="sm";b.onclick=fn;document.getElementById(id).appendChild(b)};
+  add("d","Aaj ka Test ("+dlabel(0)+")",()=>run("Daily – "+dlabel(0),()=>makeTest(dseed(0))));
+  for(let i=1;i<=6;i++)add("pd",dlabel(i),()=>run("Daily – "+dlabel(i),()=>makeTest(dseed(i))),1);
+  for(let i=1;i<=20;i++)add("mt","Mock "+i,()=>run("Mock Test "+i,()=>makeTest(7000+i)),1);
+  add("sb","Maths (20, naye)",()=>run("Maths",()=>gen(20,MG)));
+  add("sb","Reasoning (15, naye)",()=>run("Reasoning",()=>gen(15,RG)));
+  ["English","GK","Haryana GK"].forEach(k=>add("sb",`${k} (${Q[k].length})`,()=>run(k,()=>shuf(Math.random,Q[k]))));
+  add("sb",`Full GK+English (${all.length})`,()=>run("Full Static",()=>shuf(Math.random,all)));
+}
+function run(name,fn){
+  const qs=fn();let sc=0,done=0;
+  view.innerHTML=`<div class="bar"><b>${esc(name)}</b><span id="st">0 / ${qs.length} • Sahi: 0</span></div><div id="qs"></div><div class="card" id="res" hidden></div><button id="hm" style="background:transparent;color:var(--pri);border:1px solid var(--pri)">← Wapas</button>`;
+  document.getElementById("hm").onclick=home;
+  const box=document.getElementById("qs"),st=document.getElementById("st");
+  qs.forEach((m,i)=>{
+    const c=document.createElement("div");c.className="card";c.innerHTML=`<b>Q${i+1}. ${esc(m[0])}</b>`;
+    const ob=document.createElement("div");
+    m[1].forEach((t,j)=>{
+      const b=document.createElement("button");b.className="opt";b.textContent=String.fromCharCode(65+j)+". "+t;
+      b.onclick=()=>{
+        if(c.dataset.d)return;c.dataset.d=1;done++;
+        ob.children[m[2]].classList.add("ok");
+        if(j===m[2])sc++;else b.classList.add("bad");
+        const x=document.createElement("div");x.className="sol";x.textContent="Solution: "+m[3];c.appendChild(x);
+        st.textContent=`${done} / ${qs.length} • Sahi: ${sc}`;
+        if(done===qs.length){const r=document.getElementById("res");r.hidden=false;r.innerHTML=`<h2>Score: ${sc} / ${qs.length} (${Math.round(sc*100/qs.length)}%)</h2><button id="rt">Dobara</button>`;document.getElementById("rt").onclick=()=>run(name,fn);r.scrollIntoView({behavior:"smooth"})}
+      };
+      ob.appendChild(b);
+    });
+    c.appendChild(ob);box.appendChild(c);
+  });
+}
+
+const esc=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+let CUSTOM=[];try{CUSTOM=JSON.parse(document.getElementById("cd").textContent)}catch(e){}
+async function publishCustom(list){
+  const art=await claude.use("artifact");if(!art)throw {code:"not_granted"};
+  const tpl=document.getElementById("tpl").textContent;
+  const raw=tpl.split("<\\/script>").join("<"+"/script>");
+  const cd=JSON.stringify(list).split("<").join("\\u003c");
+  const html=raw.split("@@"+"CD"+"@@").join(cd).split("@@"+"TPL"+"@@").join(tpl);
+  await art.publish(html);
+}
+function parseQs(t){
+  const out=[],L=t.split("\n").map(x=>x.trim()).filter(Boolean);
+  for(let i=0;i<L.length;i++){
+    const p=L[i].split("|").map(x=>x.trim());
+    if(p.length<6)throw new Error(`Line ${i+1}: format hai  Sawal | A | B | C | D | Sahi | Solution`);
+    const ai="ABCD".indexOf(p[5].toUpperCase().charAt(0)),an=ai>=0?ai:parseInt(p[5])-1;
+    if(!(an>=0&&an<4))throw new Error(`Line ${i+1}: Sahi option A, B, C ya D likhein`);
+    out.push([p[0],p.slice(1,5),an,p[6]||"—"]);
+  }
+  if(!out.length)throw new Error("Koi sawal nahi mila");return out;
+}
+function adminView(){
+  view.innerHTML=`<div class="card"><h2>⚙ Admin – Naya Test jodein</h2><div class="mut">Har line mein ek sawal. Format:<br><code>Sawal | A | B | C | D | Sahi (A/B/C/D) | Solution</code></div>
+  <input id="at" placeholder="Test ka naam (jaise: Daily Test 5 Oct)"><textarea id="aq" rows="9" placeholder="2+2 kitna hai? | 3 | 4 | 5 | 6 | B | 2+2 = 4"></textarea>
+  <div class="err" id="ae"></div><button id="ap">Publish karein</button><button id="ab" style="background:transparent;color:var(--pri);border:1px solid var(--pri)">← Wapas</button></div>
+  <div class="card"><h2>Admin ke tests</h2><div id="al"></div></div>`;
+  document.getElementById("ab").onclick=home;
+  const er=m=>document.getElementById("ae").textContent=m;
+  const fail=e=>er(e&&e.code==="not_writer"?"Aap is page ke owner nahi hain.":e&&e.code==="conflict"?"":(e&&e.message)||"Publish nahi ho paya, dobara koshish karein.");
+  document.getElementById("ap").onclick=async()=>{
+    try{
+      const t=document.getElementById("at").value.trim();if(!t)throw new Error("Test ka naam likhein");
+      const qs=parseQs(document.getElementById("aq").value);
+      er("Publish ho raha hai…");
+      await publishCustom([{id:Date.now(),title:t,date:dlabel(0),qs}].concat(CUSTOM));
+    }catch(e){fail(e)}
+  };
+  const al=document.getElementById("al");
+  if(!CUSTOM.length)al.innerHTML='<span class="mut">Abhi koi test nahi.</span>';
+  CUSTOM.forEach(t=>{
+    const d=document.createElement("div");d.style.cssText="display:flex;justify-content:space-between;gap:8px;align-items:center;padding:6px 0";
+    d.innerHTML=`<span>${esc(t.title)} <span class="mut">(${t.qs.length} Q • ${esc(t.date)})</span></span>`;
+    const b=document.createElement("button");b.className="sm";b.style.background="var(--bad)";b.textContent="Delete";
+    b.onclick=async()=>{if(confirm("Ye test hata dein?")){try{await publishCustom(CUSTOM.filter(x=>x.id!==t.id))}catch(e){fail(e)}}};
+    d.appendChild(b);al.appendChild(d);
+  });
+}
+document.getElementById("adm").onclick=adminView;
+(async()=>{try{if(!window.claude)return;const u=await claude.use("user"),a=await claude.use("artifact");if(u&&a&&await u.isOwner())document.getElementById("adm").hidden=false}catch(e){}})();
+setTimeout(()=>{const sp=document.getElementById("splash");if(sp)sp.remove()},2800);
+document.getElementById("splash").onclick=()=>document.getElementById("splash").remove();
+</script>
+</body>
+</html>
